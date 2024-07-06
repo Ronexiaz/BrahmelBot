@@ -3,11 +3,6 @@ import random
 
 
 def getWaiter():
-    pickNum = random.randint(1, 2)
-    fileName = ""
-    if pickNum == 1:
-        fileName = "more blood please.png"
-    else:
-        fileName = "more alchemical reagent please.png"
-
+    pickNum = random.randint(0, len(GlobalLists.PHOTOS) - 1)
+    fileName = GlobalLists.PHOTOS[pickNum]
     return fileName
