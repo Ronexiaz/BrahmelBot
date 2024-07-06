@@ -2,6 +2,8 @@ import random
 
 import discord
 from discord import app_commands
+
+import Misc
 import Potion
 import Retainer
 import Dice
@@ -61,13 +63,7 @@ async def stats(interaction):
 # noinspection PyUnresolvedReferences
 @tree.command(name="waiter", description="Waiter, oh waiter!")
 async def waiter(interaction):
-    pickNum = random.randint(1, 2)
-    fileName = ""
-    if pickNum == 1:
-        fileName = "more blood please.png"
-    else:
-        fileName = "more alchemical reagent please.png"
-    await interaction.response.send_message(file=discord.File(fileName))
+    await interaction.response.send_message(file=discord.File(Misc.getWaiter()))
 
 
 def runBot():

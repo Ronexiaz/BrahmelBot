@@ -1104,3 +1104,8 @@ BRAHMEL_SAYS_LIST_STATE = [
     "I've done it again! ",
     "Dr. Lumos is sure to fund such a serum! "
 ]
+
+PHOTOS = [
+    "more alchemical reagent please.png",
+    "more blood please.png"
+]
