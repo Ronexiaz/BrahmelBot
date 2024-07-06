@@ -1,3 +1,5 @@
+import random
+
 import discord
 from discord import app_commands
 import Potion
@@ -17,7 +19,7 @@ async def on_ready():
     try:
         tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_2))
         tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_1))
-        synced1 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_1))
+        synced1 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_2))
         print(f"Synced {len(synced1)} command(s)")
     except Exception as e:
         print(e)
@@ -54,6 +56,18 @@ async def retainer(interaction, level_max: int, level_min: int, amount: int):
 async def stats(interaction):
     stat = Dice.Stats()
     await interaction.response.send_message(stat.printStats())
+
+
+# noinspection PyUnresolvedReferences
+@tree.command(name="waiter", description="Waiter, oh waiter!")
+async def waiter(interaction):
+    pickNum = random.randint(1, 2)
+    fileName = ""
+    if pickNum == 1:
+        fileName = "more blood please.png"
+    else:
+        fileName = "more alchemical reagent please.png"
+    await interaction.response.send_message(file=discord.File(fileName))
 
 
 def runBot():
