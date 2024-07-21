@@ -1,31 +1,23 @@
 import random
 
-class Stats:
-    statList = []
 
-    def __init__(self):
-        pass
+class DiceRoller:
+    def __init__(self, amt, type, modi):
+        self.amt = amt
+        self.type = type
+        self.modi = modi
 
-    def genStat(self):
-        currStat = []
-        statSum = 0
+    def rollDice(self):
+        totalRoll = 0
+        allRolls = []
+        for i in range(self.amt):
+            newRoll = random.randint(1, self.type)
+            allRolls.append(newRoll)
+            totalRoll += newRoll
 
-        for x in range(3):
-            currRoll = random.randint(1, 6)
-            currStat.append(currRoll)
-            statSum += currRoll
+        rollOut = (" rolled: " + str(allRolls)
+                   + "\nModifier given: " + str(self.modi)
+                   + "\nTotal of rolled dice and modifier: "
+                   + "**" + str(totalRoll + self.modi) + "**")
 
-        currStat.append(statSum)
-
-        return currStat
-
-    def printStats(self):
-        allStats = ""
-
-        for i in range(6):
-            self.statList.append(self.genStat())
-
-        for j in self.statList:
-            allStats += "- [" + str(j[0]) + ", " + str(j[1]) + ", " + str(j[2]) + "] = **" + str(j[3]) + "**\n"
-
-        return allStats
+        return rollOut

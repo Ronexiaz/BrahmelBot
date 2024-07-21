@@ -80,6 +80,11 @@ class RetainerGen:
         return self.retList
 
     def printList(self):
+        if self.levMax < self.levMin:
+            return GlobalLists.LVL_ERROR
+
+        self.genList()
+
         msg = ""
 
         for i in self.retList:
