@@ -22,7 +22,7 @@ async def on_ready():
     try:
         tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_2))
         tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_1))
-        synced1 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_2))
+        synced1 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_1))
         print(f"Synced {len(synced1)} command(s)")
     except Exception as e:
         print(e)
