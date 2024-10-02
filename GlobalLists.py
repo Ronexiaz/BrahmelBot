@@ -680,6 +680,11 @@ POT_DICT_LIST = [
     {
         "appearance": "deep blue rotating against its own reflection.",
         "taste": "tastes of bitter hemlock and causes one's tongue to numb."
+    },
+
+    {
+        "appearance": "velvety, violet sludge that fades between clear and opaque.",
+        "taste": "tastes of elderberries and medicinal herbs."
     }
 ]
 POT_COUNT = len(POT_DICT_LIST)
