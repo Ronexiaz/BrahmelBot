@@ -20,6 +20,7 @@ class Stats:
         return currStat
 
     def printStats(self):
+        statList = []
         allStats = ""
 
         for i in range(6):
