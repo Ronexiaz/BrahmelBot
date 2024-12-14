@@ -1,6 +1,7 @@
 import random
 import GlobalLists
 
+
 class Potion:
     appearance = ""
     taste = ""

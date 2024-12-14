@@ -9,6 +9,7 @@ import Potion
 import Retainer
 import Stats
 import cred
+import Spells
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -24,22 +25,37 @@ async def on_ready():
         tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_1))
         synced1 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_1))
         print(f"Synced {len(synced1)} command(s)")
+        synced2 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_2))
+        print(f"Synced {len(synced2)} command(s)")
     except Exception as e:
         print(e)
 
 # noinspection PyUnresolvedReferences
-@tree.command(name="funny", description="Does something funny!")
-async def funny(interaction):
-    user = await bot.fetch_user(Misc.getRandomID())
-    channel = await user.create_dm()
-    await interaction.response.send_message("Funny thing accomplished!")
-    await channel.send(Misc.getRandomPost())
+# Deprecated function, no longer in use. Contact me for more info.
+# @tree.command(name="funny", description="Does something funny!")
+# async def funny(interaction):
+#     user = await bot.fetch_user(Misc.getRandomID())
+#     channel = await user.create_dm()
+#     await interaction.response.send_message("Funny thing accomplished!")
+#     await channel.send(Misc.getRandomPost())
 
 # noinspection PyUnresolvedReferences
 @tree.command(name="potion", description="Generates a random potion.")
 async def potion(interaction):
     pot = Potion.Potion()
     await interaction.response.send_message(pot.getMessage())
+
+@tree.command(name="spell_list", description="Returns a list of spells from the given class/level.")
+@app_commands.describe(classoption="What is the class?",
+                       level="What is the spell level?")
+async def spellList(interaction, classoption: str, level: str):
+    spell = Spells.Spell(classoption.upper(), level)
+    try:
+        spellString = spell.getSpellList()
+        await interaction.response.send_message(spellString)
+    except:
+        await interaction.response.send_message("This class does not exist, does not have a spell table, or does not "
+                                                "have a spell of the chosen level.")
 
 
 # noinspection PyUnresolvedReferences
