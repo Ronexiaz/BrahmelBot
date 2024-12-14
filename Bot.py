@@ -51,7 +51,8 @@ async def potion(interaction):
 async def spellList(interaction, classoption: str, level: str):
     spell = Spells.Spell(classoption.upper(), level)
     try:
-        spellString = spell.getSpellList()
+        spellList = spell.getSpellList()
+        spellString = spell.formatSpellList()
         await interaction.response.send_message(spellString)
     except:
         await interaction.response.send_message("This class does not exist, does not have a spell table, or does not "
@@ -63,7 +64,10 @@ async def spellList(interaction, classoption: str, level: str):
 @app_commands.describe(amount="How many potions are you making?")
 async def potion(interaction, amount: int):
     pot = Potion.Potion()
-    await interaction.response.send_message(pot.getMessages(amount))
+    try:
+        await interaction.response.send_message(pot.getMessages(amount))
+    except:
+        await interaction.response.send_message("Improper inputs given or amount too large!")
 
 
 # noinspection PyUnresolvedReferences
@@ -73,7 +77,10 @@ async def potion(interaction, amount: int):
                        level_min="What is the min level?")
 async def retainer(interaction, level_max: int, level_min: int, amount: int):
     retList = Retainer.RetainerGen(level_max, level_min, amount)
-    await interaction.response.send_message(retList.printList())
+    try:
+        await interaction.response.send_message(retList.printList())
+    except:
+        await interaction.response.send_message("Improper inputs given or amount too large!")
 
 
 # noinspection PyUnresolvedReferences
@@ -96,7 +103,11 @@ async def waiter(interaction):
 async def roll(interaction, amt: int, type: int, modi: int):
     roller = Dice.DiceRoller(amt, type, modi)
     user = interaction.user
-    await interaction.response.send_message(user.mention + roller.rollDice())
+    try:
+        if amt > 100: raise Exception()
+        await interaction.response.send_message(user.mention + roller.rollDice())
+    except:
+        await interaction.response.send_message("Improper inputs given or amount too large!")
 
 
 def runBot():
