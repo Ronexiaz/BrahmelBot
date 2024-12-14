@@ -1,7 +1,9 @@
 import GlobalLists
 
-class Spell:
+
+class SpellList:
     spellList = []
+
     def __init__(self, classOption, level):
         self.classOption = classOption
         self.level = level
@@ -12,8 +14,13 @@ class Spell:
         return self.spellList
 
     def formatSpellList(self):
-        spellString = "Level **" + self.level + "** spells for the class of **" + self.classOption + "**:\n"
+        spellString = "(Some spells may not be linked properly as they do not appear in the SRD)\n" + "Level **" + self.level + "** spells for the class of **" + self.classOption + "**:\n"
         for s in self.spellList:
-            spellString = spellString + "- " + s + "\n"
+            spellLink = "[" + s + "](<https://oldschoolessentials.necroticgnome.com/srd/index.php/" + s.replace(" ", "_") + ">)"
+            spellString = spellString + "- " + spellLink + "\n"
 
         return spellString
+
+
+class Spell:
+    pass

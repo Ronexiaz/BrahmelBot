@@ -30,6 +30,7 @@ async def on_ready():
     except Exception as e:
         print(e)
 
+
 # noinspection PyUnresolvedReferences
 # Deprecated function, no longer in use. Contact me for more info.
 # @tree.command(name="funny", description="Does something funny!")
@@ -45,13 +46,14 @@ async def potion(interaction):
     pot = Potion.Potion()
     await interaction.response.send_message(pot.getMessage())
 
+
 @tree.command(name="spell_list", description="Returns a list of spells from the given class/level.")
 @app_commands.describe(classoption="What is the class?",
                        level="What is the spell level?")
 async def spellList(interaction, classoption: str, level: str):
-    spell = Spells.Spell(classoption.upper(), level)
+    spell = Spells.SpellList(classoption.upper(), level)
     try:
-        spellList = spell.getSpellList()
+        newSpellList = spell.getSpellList()
         spellString = spell.formatSpellList()
         await interaction.response.send_message(spellString)
     except:
@@ -94,6 +96,7 @@ async def stats(interaction):
 @tree.command(name="waiter", description="Waiter, oh waiter!")
 async def waiter(interaction):
     await interaction.response.send_message(file=discord.File(Misc.getWaiter()))
+
 
 # noinspection PyUnresolvedReferences
 @tree.command(name="roll", description="Rolls some dice!")

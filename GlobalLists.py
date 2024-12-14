@@ -725,7 +725,7 @@ MASTER_SPELL_DICT = {
             "Detect Magic",
             "Floating Disc",
             "Hold Portal",
-            "Light(Darkness)",
+            "Light (Darkness)",
             "Magic Missile",
             "Protection from Evil",
             "Read Languages",
@@ -811,7 +811,7 @@ MASTER_SPELL_DICT = {
             "Detect Magic",
             "Floating Disc",
             "Hold Portal",
-            "Light(Darkness)",
+            "Light (Darkness)",
             "Magic Missile",
             "Protection from Evil",
             "Read Languages",
@@ -897,7 +897,7 @@ MASTER_SPELL_DICT = {
             "Detect Magic",
             "Floating Disc",
             "Hold Portal",
-            "Light(Darkness)",
+            "Light (Darkness)",
             "Magic Missile",
             "Protection from Evil",
             "Read Languages",
@@ -1529,6 +1529,8 @@ MASTER_SPELL_DICT = {
         }
     }
 }
+
+
 
 BRAHMEL_SAYS_LIST_EXCLAIM = [
     "Aha! ",
