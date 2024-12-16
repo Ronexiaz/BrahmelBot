@@ -61,6 +61,20 @@ async def spellList(interaction, classoption: str, level: str):
                                                 "have a spell of the chosen level.")
 
 
+@tree.command(name="find_spell", description="Returns all classes/levels who can learn a spell.")
+@app_commands.describe(spellname="What is the spell?")
+async def spellFind(interaction, spellname: str):
+    spell = Spells.Spell(spellname)
+    spell.formatSpell()
+    try:
+        spellLocs = spell.findSpell()
+        if not spellLocs: raise Exception
+        await interaction.response.send_message(spell.printSpell())
+    except Exception as e:
+        await interaction.response.send_message("This spell does not exist or is not used by the classes listed.")
+        print(e)
+
+
 # noinspection PyUnresolvedReferences
 @tree.command(name="potions", description="Generates multiple random potions.")
 @app_commands.describe(amount="How many potions are you making?")

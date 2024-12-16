@@ -1453,7 +1453,7 @@ MASTER_SPELL_DICT = {
             "Marionette",
             "Pass Undead",
             "Protection from Evil",
-            "REad MAgic",
+            "Read Magic",
             "Skull Speech",
             "Undead Servitor"
         },
