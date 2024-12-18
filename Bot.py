@@ -8,6 +8,7 @@ import Misc
 import Potion
 import Retainer
 import Stats
+import Weather
 import cred
 import Spells
 
@@ -23,10 +24,13 @@ async def on_ready():
     try:
         tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_2))
         tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_1))
+        tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_3))
         synced1 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_1))
         print(f"Synced {len(synced1)} command(s)")
         synced2 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_2))
         print(f"Synced {len(synced2)} command(s)")
+        synced3 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_3))
+        print(f"Synced {len(synced3)} command(s)")
     except Exception as e:
         print(e)
 
@@ -72,6 +76,20 @@ async def spellFind(interaction, spellname: str):
         await interaction.response.send_message(spell.printSpell())
     except Exception as e:
         await interaction.response.send_message("This spell does not exist or is not used by the classes listed.")
+
+
+@tree.command(name="weather", description="Simulates weather based on climate.")
+@app_commands.describe(climate="What is the climate?",
+                       month="What is the month name?",
+                       first="What is the first day?",
+                       final="What is the final day?")
+async def weatherGet(interaction, climate: str, month: str, first: int, final: int):
+    try:
+        dayList = Weather.WeatherCalendar(climate, month, first, final)
+        dayList.setDayList()
+        await interaction.response.send_message(dayList.printDayList())
+    except Exception as e:
+        await interaction.response.send_message("Improper inputs given or number too large!")
         print(e)
 
 

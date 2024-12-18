@@ -1530,7 +1530,134 @@ MASTER_SPELL_DICT = {
     }
 }
 
-
+WEATHER_DICT = {
+    "ALPINE": {
+        "WEATHER": [
+            "Biting winds dash the harsh hills, culling naked torchlight.",
+            "The sun is great and warm in the sky.",
+            "Thick fogs choke your cone of vision, reducing visibility.",
+            "Heavy snow drifts set in, binding unprotected legs in packed ice.",
+            "Snow packs deep into mountain ridges, slicking peaks in ice."
+        ],
+    },
+    "ARID": {
+        "WEATHER": [
+            "The sun is great and warm in the sky.",
+            "The sun is harsh and unforgiving, your feet burn on the sands and soil.",
+            "The arid winds mix dust into the air, scratching your throat raw.",
+            "The arid winds mix dust into the air, obscuring your vision.",
+            "Clouds darken and lightning cracks, a static buildup can be felt in the air."
+        ],
+    },
+    "HUMID-CONTINENTAL": {
+        "WEATHER": [
+            "The sun is great and warm in the sky.",
+            "Winds whip through the air, haphazardly twisting light objects about.",
+            "Heavy rain coats the sky, reducing visibility.",
+            "Heavy rain coats the sky, reducing maneuverability.",
+            "Light hail falls, pinging off of metallic objects."
+        ],
+    },
+    "HUMID-SUBTROPICAL": {
+        "WEATHER": [
+            "The sun is great and warm in the sky.",
+            "Winds whip through the air, haphazardly twisting light objects about.",
+            "Heavy rain coats the sky, reducing visibility.",
+            "Heavy rain coats the sky, reducing maneuverability.",
+            "The sun's rays heat nearby water and plant-life, greatly raising humidity."
+        ],
+    },
+    "ICE CAP": {
+        "WEATHER": [
+            "The sun is great and warm in the sky.",
+            "The sun's rays heat nearby ice caps, melting and refreezing surfaces.",
+            "Biting winds dash the harsh hills, culling naked torchlight.",
+            "Thick fogs choke your cone of vision, reducing visibility.",
+            "Winds whip through the air, haphazardly twisting light objects about."
+        ],
+    },
+    "OCEANIC": {
+        "WEATHER": [
+            "The sun is great and warm in the sky.",
+            "The sun's rays heat nearby water and plant-life, greatly raising humidity.",
+            "Winds whip through the air, twisting sails.",
+            "Tides become choppy, rocking vessels.",
+            "Tides become choppy, rousing creatures of the deep."
+        ],
+    },
+    "SUBARCTIC": {
+        "WEATHER": [
+            "The sun is great and warm in the sky.",
+            "Thick snowfall chokes your cone of vision, reducing visibility.",
+            "Heavy snow drifts set in, binding unprotected legs in packed ice.",
+            "Winds whip through the air, haphazardly twisting light objects about.",
+            "Light hail falls, pinging off of metallic objects."
+        ],
+    },
+    "SEMI-ARID": {
+        "WEATHER": [
+            "The sun is great and warm in the sky.",
+            "The sun is harsh and unforgiving, your feet burn on the sands and soil.",
+            "The arid winds mix dust into the air, obscuring your vision.",
+            "Clouds darken and lightning cracks, a static buildup can be felt in the air.",
+            "Rain falls, causing sand and soil to become loose."
+        ]
+    },
+    "MEDITERRANEAN": {
+        "WEATHER": [
+            "The sun is great and warm in the sky.",
+            "Rain falls, causing sand and soil to become loose.",
+            "Winds whip through the air, haphazardly twisting light objects about.",
+            "Clouds darken and lightning cracks, a static buildup can be felt in the air.",
+            "Heavy rain falls, reducing movement and visibility."
+        ],
+    },
+    "TROPICAL MONSOON": {
+        "WEATHER": [
+            "The sun is great and warm in the sky.",
+            "Heavy rain falls, reducing movement and visibility.",
+            "The sun's rays heat nearby water and plant-life, greatly raising humidity.",
+            "Clouds darken and lightning cracks, a static buildup can be felt in the air.",
+            "The wind and rain break upon the land in combined force, tearing light objects from the ground."
+        ],
+    },
+    "TROPICAL RAINFOREST": {
+        "WEATHER": [
+            "The sun is great and warm in the sky.",
+            "Heavy rain falls, reducing movement and visibility.",
+            "The sun's rays heat nearby water and plant-life, greatly raising humidity.",
+            "Rain falls, causing sand and soil to become loose.",
+            "A brisk wind passes through the canopy, perfect conditions for hunting."
+        ]
+    },
+    "TROPICAL SAVANNA": {
+        "WEATHER": [
+            "The sun is great and warm in the sky.",
+            "The sun's rays heat nearby water and plant-life, greatly raising humidity.",
+            "Clouds darken and lightning cracks, a static buildup can be felt in the air.",
+            "Rain falls, causing sand and soil to become loose.",
+            "The air is dry and warm, tall grasses loosen."
+        ],
+    },
+    "TUNDRA": {
+        "WEATHER": [
+            "The sun is great and warm in the sky.",
+            "Biting winds dash the harsh lands, culling naked torchlight.",
+            "Thick fogs choke your cone of vision, reducing visibility.",
+            "Winds whip through the air, haphazardly twisting light objects about.",
+            "Heavy snow drifts set in, binding unprotected legs in packed ice."
+        ],
+    },
+    "POLAR": {
+        "WEATHER": [
+            "The sun is great and warm in the sky.",
+            "Biting winds dash the harsh lands, culling naked torchlight.",
+            "Light hail falls, pinging off of metallic objects.",
+            "Heavy snow drifts set in, binding unprotected legs in packed ice.",
+            "Heavy hail falls, denting both thin wood and metal."
+        ],
+    }
+}
 
 BRAHMEL_SAYS_LIST_EXCLAIM = [
     "Aha! ",
