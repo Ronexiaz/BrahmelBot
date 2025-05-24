@@ -11,6 +11,7 @@ import Stats
 import Weather
 import cred
 import Spells
+import Kit
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -22,15 +23,23 @@ tree = app_commands.CommandTree(bot)
 async def on_ready():
     print(f'Ready for brewing...')
     try:
-        tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_2))
-        tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_1))
-        tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_3))
-        synced1 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_1))
-        print(f"Synced {len(synced1)} command(s)")
-        synced2 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_2))
-        print(f"Synced {len(synced2)} command(s)")
-        synced3 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_3))
-        print(f"Synced {len(synced3)} command(s)")
+        for guild in bot.guilds:
+            tree.copy_global_to(guild=guild)
+            synced = await tree.sync(guild=guild)
+            print(f"Synced {len(synced)} command(s) to guild at ID: " + str(guild.id))
+
+        # tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_2))
+        # tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_1))
+        # tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_3))
+        # tree.copy_global_to(guild=discord.Object(id=cred.TEST_SERVER_4))
+        # synced1 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_1))
+        # print(f"Synced {len(synced1)} command(s)")
+        # synced2 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_2))
+        # print(f"Synced {len(synced2)} command(s)")
+        # synced3 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_3))
+        # print(f"Synced {len(synced3)} command(s)")
+        # synced4 = await tree.sync(guild=discord.Object(id=cred.TEST_SERVER_3))
+        # print(f"Synced {len(synced4)} command(s)")
     except Exception as e:
         print(e)
 
@@ -132,7 +141,7 @@ async def waiter(interaction):
 
 # noinspection PyUnresolvedReferences
 @tree.command(name="roll", description="Rolls some dice!")
-@app_commands.describe(amt="How many dice will be rolled",
+@app_commands.describe(amt="How many dice will be rolled?",
                        type="How many sides are on the dice?",
                        modi="Any modifiers added to the roll?")
 async def roll(interaction, amt: int, type: int, modi: int):
@@ -144,6 +153,13 @@ async def roll(interaction, amt: int, type: int, modi: int):
     except:
         await interaction.response.send_message("Improper inputs given or amount too large!")
 
+
+# noinspection PyUnresolvedReferences
+@tree.command(name="kit", description="Generates an equipment kit for a given class and level.")
+@app_commands.describe(classoption="What is the class of the character?",
+                       level="What is the level of the character?")
+async def kit(interaction, classoption: str, level: int):
+    pass
 
 def runBot():
     bot.run(cred.TOKEN)

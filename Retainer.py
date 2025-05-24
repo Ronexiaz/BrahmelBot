@@ -1,6 +1,6 @@
 import random
-import fantasynames as names
 import GlobalLists
+from fictional_names import name_generator
 
 
 class RetainerGen:
@@ -12,7 +12,9 @@ class RetainerGen:
         self.amt = amt
 
     def genCLN(self):
+        names = name_generator.generate_name
         randLevel = random.randint(self.levMin, self.levMax)
+        randName = names()
         if randLevel == 0:
             randClass = "Human"
         else:
@@ -20,21 +22,21 @@ class RetainerGen:
 
         randNum = random.randint(1, 3)
 
-        if randClass == "Elf":
-            randName = names.elf()
-        elif randClass == "Dwarf":
-            randName = names.dwarf()
-        elif randClass == "Gnome" or randClass == "Halfling":
-            randName = names.hobbit()
-        elif randNum == 1:
-            randName = names.anglo()
-        elif randNum == 2:
-            randName = names.french()
-        else:
-            randName = names.human()
+        match randClass:
+            case "Elf":
+                randName = names(style='elven', library=False)
+            case "Dwarf":
+                randName = names(style='dwarven', library=False)
+            case "Gnome":
+                randName = names(style='gnomish', library=False)
+            case "Halfling":
+                randName = names(style='halfling', library=False)
+            case "Gargantua":
+                randName = names(style='giant', library=False)
+            case _:
+                randName = names(style='human', library=False)
 
         randCLN = "**" + str(randName) + "**, level " + str(randLevel) + ": " + randClass
-
         return randCLN
 
     def genAttr(self):

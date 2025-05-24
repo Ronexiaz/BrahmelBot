@@ -716,6 +716,7 @@ CLASS_LIST = [
     "Merchant",
     "Archer",
 ]
+
 CLASS_LIST_LENGTH = len(CLASS_LIST)
 
 MASTER_SPELL_DICT = {
@@ -732,7 +733,7 @@ MASTER_SPELL_DICT = {
             "Read Magic",
             "Shield",
             "Sleep",
-            "Ventriloquism"
+            "Ventriloquism",
         ],
         "2": [
             "Continual Light (Continual Darkness)",
@@ -746,7 +747,7 @@ MASTER_SPELL_DICT = {
             "Mirror Image",
             "Phantasmal Force",
             "Web",
-            "Wizard Lock"
+            "Wizard Lock",
         ],
         "3": [
             "Clairvoyance",
@@ -760,7 +761,7 @@ MASTER_SPELL_DICT = {
             "Lightning Bolt",
             "Protection from Evil 10’ Radius",
             "Protection from Normal Missiles",
-            "Water Breathing"
+            "Water Breathing",
         ],
         "4": [
             "Charm Monster",
@@ -774,7 +775,7 @@ MASTER_SPELL_DICT = {
             "Remove Curse (Curse)",
             "Wall of Fire",
             "Wall of Ice",
-            "Wizard Eye"
+            "Wizard Eye",
         ],
         "5": [
             "Animate Dead",
@@ -788,7 +789,7 @@ MASTER_SPELL_DICT = {
             "Telekinesis",
             "Teleport",
             "Transmute Rock to Mud (Mud to Rock)",
-            "Wall of Stone"
+            "Wall of Stone",
         ],
         "6": [
             "Anti-Magic Shell",
@@ -802,7 +803,7 @@ MASTER_SPELL_DICT = {
             "Part Water",
             "Projected Image",
             "Reincarnation",
-            "Stone to Flesh (Flesh to Stone)"
+            "Stone to Flesh (Flesh to Stone)",
         ],
     },
     "HALF-ELF": {
