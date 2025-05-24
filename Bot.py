@@ -4,6 +4,7 @@ import discord
 from discord import app_commands
 
 import Dice
+import GlobalLists
 import Misc
 import Potion
 import Retainer
@@ -159,7 +160,17 @@ async def roll(interaction, amt: int, type: int, modi: int):
 @app_commands.describe(classoption="What is the class of the character?",
                        level="What is the level of the character?")
 async def kit(interaction, classoption: str, level: int):
-    pass
+    try:
+        classoption = classoption.lower()
+        # if classoption.title() not in GlobalLists.CLASS_LIST: raise Exception()
+        if classoption.title() != 'Cleric': raise Exception()
+        if level > 14: raise Exception()
+        await interaction.response.send_message(Kit.FullKit(classoption.upper(), level).assembleKit())
+    except Exception as e:
+        print(e)
+        await interaction.response.send_message(
+            "Class does not exist, is not yet supported, or is higher than level 14." + classoption.title())
+
 
 def runBot():
     bot.run(cred.TOKEN)
