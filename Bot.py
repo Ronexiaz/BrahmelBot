@@ -118,9 +118,10 @@ async def potion(interaction, amount: int):
 @tree.command(name="retainer", description="Generates a random set of retainers.")
 @app_commands.describe(amount="How many retainers?",
                        level_max="What is the max level?",
-                       level_min="What is the min level?")
-async def retainer(interaction, level_max: int, level_min: int, amount: int):
-    retList = Retainer.RetainerGen(level_max, level_min, amount)
+                       level_min="What is the min level?",
+                       extras="Would you like to include extra classes?")
+async def retainer(interaction, level_max: int, level_min: int, amount: int, extras: bool):
+    retList = Retainer.RetainerGen(level_max, level_min, amount, extras)
     try:
         await interaction.response.send_message(retList.printList())
     except:
@@ -162,14 +163,13 @@ async def roll(interaction, amt: int, type: int, modi: int):
 async def kit(interaction, classoption: str, level: int):
     try:
         classoption = classoption.lower()
-        # if classoption.title() not in GlobalLists.CLASS_LIST: raise Exception()
-        if classoption.title() != 'Cleric': raise Exception()
+        if classoption.title() not in GlobalLists.CLASS_LIST: raise Exception()
         if level > 14: raise Exception()
         await interaction.response.send_message(Kit.FullKit(classoption.upper(), level).assembleKit())
     except Exception as e:
         print(e)
         await interaction.response.send_message(
-            "Class does not exist, is not yet supported, or is higher than level 14." + classoption.title())
+            "Class does not exist, is not yet supported, or is higher than level 14.")
 
 
 def runBot():

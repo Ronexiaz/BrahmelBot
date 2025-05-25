@@ -6,7 +6,8 @@ from fictional_names import name_generator
 class RetainerGen:
     retList = []
 
-    def __init__(self, levMax, levMin, amt):
+    def __init__(self, levMax, levMin, amt, extras):
+        self.extras = extras
         self.levMax = levMax
         self.levMin = levMin
         self.amt = amt
@@ -18,7 +19,8 @@ class RetainerGen:
         if randLevel == 0:
             randClass = "Human"
         else:
-            randClass = GlobalLists.CLASS_LIST[random.randint(0, GlobalLists.CLASS_LIST_LENGTH - 1)]
+            if self.extras == True: randClass = GlobalLists.CLASS_LIST_EXTRAS[random.randint(0, GlobalLists.CLASS_LIST_EXTRAS_LENGTH - 1)]
+            else: randClass = GlobalLists.CLASS_LIST[random.randint(0, GlobalLists.CLASS_LIST_LENGTH - 1)]
 
         randNum = random.randint(1, 3)
 
