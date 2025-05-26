@@ -27,7 +27,7 @@ class FullKit:
 def combatKit(classoption, level):
     kitList = []
     match classoption:
-        case 'CLERIC':
+        case 'CLERIC' | 'ACOLYTE':
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[2]))
             if random.randint(1, 2) == 2: kitList.append('Shield')
             kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail', 'Plate Mail']))
@@ -35,42 +35,31 @@ def combatKit(classoption, level):
         case 'THIEF':
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
             if random.randint(1, 2) == 2: kitList.append('Leather Armor')
-        case 'FIGHTER':
+        case 'FIGHTER' | 'GARGANTUA' | 'HALF-ORC' | 'KNIGHT' | 'BARBARIAN':
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
             if random.randint(1, 6) > 1: kitList.append('Shield')
             kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail', 'Plate Mail']))
-        case 'DWARF':
+        case 'DWARF' | 'HALFLING' | 'GOBLIN':
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[1]))
             if random.randint(1, 6) > 3: kitList.append('Shield')
             kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail', 'Plate Mail']))
-        case 'HALFLING':
-            kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[1]))
-            if random.randint(1, 6) > 3: kitList.append('Shield')
-            kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail', 'Plate Mail']))
-        case 'ELF':
+        case 'ELF' | 'HALF-ELF':
             kitList.append("Spellbook")
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
             if random.randint(1, 6) > 3: kitList.append('Shield')
             kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail', 'Plate Mail']))
-        case 'MAGIC USER':
+        case 'MAGIC USER' | 'ILLUSIONIST' | 'NECROMANCER':
             kitList.append("Spellbook")
             if random.randint(1, 2) == 2: kitList.append(chooseRandomFromList(['Dagger', 'Dagger (Silver)']))
         case 'ALCHEMIST':
             if random.randint(1, 2) == 2: kitList.append(chooseRandomFromList(['Dagger', 'Dagger (Silver)', 'Sling\nShot [80]']))
             if random.randint(1, 2) == 2: kitList.append('Leather Armor')
-        case 'ILLUSIONIST':
-            kitList.append("Spellbook")
-            if random.randint(1, 2) == 2: kitList.append(chooseRandomFromList(['Dagger', 'Dagger (Silver)']))
         case 'GNOME':
             kitList.append('Spellbook')
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[1]))
             if random.randint(1, 6) > 3: kitList.append('Leather Armor')
             if random.randint(1, 6) > 3: kitList.append('Shield')
-        case 'GARGANTUA':
-            kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
-            if random.randint(1, 6) > 1: kitList.append('Shield')
-            kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail', 'Plate Mail']))
-        case 'WARDEN':
+        case 'WARDEN' | 'BEAST MASTER':
             if random.randint(1, 6) > 3: kitList.append('Shield')
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
             kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail']))
@@ -79,42 +68,23 @@ def combatKit(classoption, level):
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
             kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail']))
             if level >= 8: kitList.append('Holy Symbol')
-        case 'ASSASSIN':
+        case 'ASSASSIN' | 'CHANGELING':
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
             if random.randint(1, 6) > 3: kitList.append('Leather Armor')
             if random.randint(1, 6) > 3: kitList.append('Shield')
-        case 'ACROBAT':
+        case 'ACROBAT' | 'MERCHANT':
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[3]))
             if random.randint(1, 6) > 3: kitList.append('Leather Armor')
-        case 'BEAST MASTER':
-            if random.randint(1, 6) > 3: kitList.append('Shield')
-            kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
-            kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail']))
-        case 'GOBLIN':
-            kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[1]))
-            if random.randint(1, 6) > 3: kitList.append('Shield')
-            kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail', 'Plate Mail']))
-        case 'NECROMANCER':
-            kitList.append('Spellbook')
-            if random.randint(1, 2) == 2: kitList.append(chooseRandomFromList(['Dagger', 'Dagger (Silver)', 'Staff']))
         case 'DRUID':
             kitList.append(chooseRandomFromList(['Club', 'Dagger', 'Sling\nShot [80]', 'Spear', 'Staff']))
             if random.randint(1, 6) > 3: kitList.append('Leather Armor')
             if random.randint(1, 6) > 3: kitList.append('Shield')
             kitList.append('Holy Symbol')
-        case 'MERCHANT':
-            if random.randint(1, 2) == 2: kitList.append(chooseRandomFromList(['Dagger', 'Dagger (Silver)', 'Sling\nShot [80]']))
-            if random.randint(1, 2) == 2: kitList.append('Leather Armor')
         case 'ARCHER':
             if random.randint(1, 2) == 2: kitList.append(chooseRandomFromList(['Dagger', 'Dagger (Silver)',]))
             kitList.append(chooseRandomFromList(
                 ['Crossbow\nBolts [30]', 'Short Bow\nArrows [50]', 'Long Bow\nArrows [50]']))
             if random.randint(1, 2) == 2: kitList.append('Leather Armor')
-        case 'ACOLYTE':
-            kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[2]))
-            kitList.append('Holy Symbol')
-            if random.randint(1, 2) == 2: kitList.append('Shield')
-            kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail', 'Plate Mail']))
         case 'HEPHAESTAN':
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
             if random.randint(1, 2) == 2: kitList.append('Shield')
@@ -130,11 +100,7 @@ def combatKit(classoption, level):
             kitList.append('Spellbook')
             kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail']))
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
-        case 'CHANGELING':
-            kitList.append('Leather Armor')
-            if random.randint(1, 2) == 2: kitList.append('Shield')
-            kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
-        case 'CHAOS KNIGHT':
+        case 'CHAOS KNIGHT' | 'PALADIN':
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
             if random.randint(1, 6) > 1: kitList.append('Shield')
             if level >= 9: kitList.append('Holy Symbol')
@@ -146,176 +112,59 @@ def combatKit(classoption, level):
         case 'MYCELLIAN':
             kitList.append('Shield')
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
-        case 'BARBARIAN':
-            kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
-            if random.randint(1, 6) > 1: kitList.append('Shield')
-            kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail', 'Plate Mail']))
         case 'BARD':
             if level >= 9: kitList.append('Holy Symbol')
             kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[3]))
             kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail']))
-        case 'HALF-ELF':
-            kitList.append('Spellbook')
-            kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
-            if random.randint(1, 6) > 1: kitList.append('Shield')
-            kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail', 'Plate Mail']))
-        case 'HALF-ORC':
-            kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
-            if random.randint(1, 6) > 1: kitList.append('Shield')
-            kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail']))
-        case 'KNIGHT':
-            kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
-            if random.randint(1, 6) > 1: kitList.append('Shield')
-            kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail', 'Plate Mail']))
-        case 'PALADIN':
-            kitList.append(chooseRandomFromList(GlobalLists.WEAPON_ITEM_LIST[0]))
-            if random.randint(1, 6) > 1: kitList.append('Shield')
-            if level >= 9: kitList.append('Holy Symbol')
-            kitList.append(chooseRandomFromList(['Leather Armor', 'Chainmail', 'Plate Mail']))
     return kitList
 
 
 def otherKit(classoption, level):
     kitList = []
+    if classoption == 'MERCHANT': kitList.append('Gold Piece(s) [' + str(goldCalc(level) * ((level % 3) + 2)) + ']')
+    else: kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
+    for item in getMiscItems(level): kitList.append(item)
     match classoption:
-        case 'CLERIC':
-            if random.randint(1, 4) < 4: kitList.append('Holy Water [' + str(random.randint(1, 4)) + ' Vials]')
+        case 'CLERIC' | 'ACOLYTE':
+            if random.randint(1, 4) > 1: kitList.append('Holy Water [' + str(random.randint(1, 4)) + ' Vials]')
             if random.randint(1, 10) > 7: kitList.append('Potion of Healing')
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
         case 'THIEF':
             if random.randint(1, 6) > 1: kitList.append('Thieves\' Tools')
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'FIGHTER':
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
+            kitList.append(chooseRandomFromList(['Caltrops [20]', 'Manacles', 'Chain [10 Feet]']))
+            kitList.append(chooseRandomFromList(['Pole (Wooden, 10\')', 'Rope [50 Feet]', 'Twine [100 Feet]']))
+        case 'FIGHTER' | 'HEPHAESTAN' | 'KINETICIST' | 'CHANGELING' | 'CHAOS KNIGHT' \
+             | 'MUTOID' | 'MYCELLIAN' | 'HALF-ORC' | 'KNIGHT' | 'PALADIN' | 'GARGANTUA':
+            kitList.append('Torches [6]')
+            kitList.append(chooseRandomFromList(['Oil [1 Flask]', 'Crowbar', 'Grappling Hook']))
         case 'DWARF':
             kitList.append(chooseRandomFromList(['Pick (Mining)', 'Sledgehammer', 'Hammer (Small)']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'HALFLING':
-            kitList.append(chooseRandomFromList(['Caltrops [20]', 'Magnifying Glass', 'Hammer (Small)']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'ELF':
-            if random.randint(1, 10) > 8: kitList.append("Holy Water [" + str(random.randint(1, 4)) + ' Vials]')
-            if random.randint(1, 4) > 2: kitList.append("Scroll Case")
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'MAGIC USER':
-            kitList.append(chooseRandomFromList(['Scroll Case', 'Belt Pouch', 'Chalk']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
+            kitList.append(chooseRandomFromList(['Oil [1 Flask]', 'Crowbar', 'Grappling Hook']))
+        case 'HALFLING' | 'GNOME':
+            kitList.append(chooseRandomFromList(['Caltrops [20]', 'Magnifying Glass', 'Hammer (Small)', 'Marbles [20]']))
+            kitList.append(chooseRandomFromList(['Oil [1 Flask]', 'Crowbar', 'Grappling Hook']))
+        case 'MAGIC USER' | 'ELF' | 'HALF-ELF' | 'ILLUSIONIST' | 'NECROMANCER':
+            kitList.append(chooseRandomFromList(['Scroll Case', 'Belt Pouch', 'Chalk [10 Sticks]']))
+            kitList.append(chooseRandomFromList(['Candles [10]', 'Mirror (Hand-sized, Steel)']))
         case 'ALCHEMIST':
+            if random.randint(1, 4) > 3: kitList.append('Holy Water [' + str(random.randint(1, 4)) + ' Vials]')
             kitList.append(chooseRandomFromList(['Sack (Small)', 'Belt Pouch', 'Quill', 'Vial (Glass)']))
-            kitList.append(chooseRandomFromList(['Chalk', 'Ink (Vial)', 'Wolfsbane (Bunch)']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'ILLUSIONIST':
-            kitList.append(chooseRandomFromList(['Scroll Case', 'Belt Pouch', 'Chalk']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'GNOME':
-            kitList.append(chooseRandomFromList(['Caltrops [20]', 'Magnifying Glass', 'Marbles [20]']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'GARGANTUA':
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'WARDEN':
+            kitList.append(chooseRandomFromList(['Chalk [10 Sticks]', 'Ink (Vial)', 'Wolfsbane (Bunch)']))
+        case 'WARDEN' | 'RANGER' | 'BEAST MASTER' | 'DRUID' | 'BARBARIAN':
             kitList.append(chooseRandomFromList(['Wolfsbane (Bunch)', 'Lantern', 'Tent']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'RANGER':
-            kitList.append(chooseRandomFromList(['Wolfsbane (Bunch)', 'Lantern', 'Tent']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'ASSASSIN':
+        case 'ASSASSIN' | 'GOBLIN':
             kitList.append(chooseRandomFromList(['Caltrops [20]', 'Manacles', 'Chain [10 Feet]']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'ACROBAT':
             kitList.append(chooseRandomFromList(['Pole (Wooden, 10\')', 'Rope [50 Feet]', 'Twine [100 Feet]']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'BEAST MASTER':
-            kitList.append(chooseRandomFromList(['Wolfsbane (Bunch)', 'Lantern', 'Tent']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'GOBLIN':
-            kitList.append(chooseRandomFromList(['Caltrops [20]', 'Manacles', 'Chain [10 Feet]']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'NECROMANCER':
-            kitList.append(chooseRandomFromList(['Scroll Case', 'Belt Pouch', 'Chalk']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'DRUID':
-            kitList.append(chooseRandomFromList(['Wolfsbane (Bunch)', 'Lantern', 'Tent']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'MERCHANT':
+        case 'ACROBAT' | 'ARCHER' | 'MERCHANT':
             kitList.append(chooseRandomFromList(['Pole (Wooden, 10\')', 'Rope [50 Feet]', 'Twine [100 Feet]']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'ARCHER':
-            kitList.append(chooseRandomFromList(['Pole (Wooden, 10\')', 'Rope [50 Feet]', 'Twine [100 Feet]']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'ACOLYTE':
-            if random.randint(1, 4) < 4: kitList.append('Holy Water [' + str(random.randint(1, 4)) + ' Vials]')
-            if random.randint(1, 10) > 7: kitList.append('Potion of Healing')
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'HEPHAESTAN':
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'KINETICIST':
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
+            kitList.append(chooseRandomFromList(['Caltrops [20]', 'Marbles [20]']))
         case 'MAGE':
             kitList.append('Ink (Vial)')
             kitList.append('Quill')
             kitList.append('Parchment [2 Sheets]')
-            for item in getMiscItems(level * 2): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'ARCANE BARD':
+            for item in getMiscItems(level): kitList.append(item)
+        case 'ARCANE BARD' | 'BARD':
             kitList.append(chooseRandomFromList(['Instrument (Wind)', 'Instrument (String)']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'CHANGELING':
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'CHAOS KNIGHT':
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'MUTOID':
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'MYCELLIAN':
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'BARBARIAN':
-            kitList.append(chooseRandomFromList(['Wolfsbane (Bunch)', 'Lantern', 'Tent']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'BARD':
-            kitList.append(chooseRandomFromList(['Instrument (Wind)', 'Instrument (String)']))
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'HALF-ELF':
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'HALF-ORC':
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'KNIGHT':
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
-        case 'PALADIN':
-            for item in getMiscItems(level): kitList.append(item)
-            kitList.append('Gold Piece(s) [' + str(goldCalc(level)) + ']')
+            kitList.append(chooseRandomFromList(['Pole (Wooden, 10\')', 'Rope [50 Feet]', 'Twine [100 Feet]']))
     return kitList
 
 
