@@ -128,7 +128,8 @@ def EQLevel(classOption, level):
     match classOption:
         case "Cleric" | "Fighter" | "Magic User" | "Thief" | "Acrobat" | "Assassin" | "Barbarian" | "Bard" | "Cleric" | \
              "Druid" | "Illusionist" | "Knight" | "Paladin" | "Ranger" | "Arcane Bard" | "Beast Master" | \
-             "Chaos Knight" | "Mage" | "Warden" | "Necromancer" | "Acolyte" | "Kineticist" | "Mage":
+             "Chaos Knight" | "Mage" | "Warden" | "Necromancer" | "Acolyte" | "Kineticist" | "Mage" | "Archer" | \
+             "Alchemist" | "Merchant":
             if level > 14: eqLevel = 14
         case "Dwarf" | "Half-Elf":
             if level > 12: eqLevel = 12
