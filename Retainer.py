@@ -124,7 +124,7 @@ def genAttr():
 
 
 def EQLevel(classOption, level):
-    eqLevel = 0
+    eqLevel = level
     match classOption:
         case "Cleric" | "Fighter" | "Magic User" | "Thief" | "Acrobat" | "Assassin" | "Barbarian" | "Bard" | "Cleric" | \
              "Druid" | "Illusionist" | "Knight" | "Paladin" | "Ranger" | "Arcane Bard" | "Beast Master" | \
@@ -140,7 +140,7 @@ def EQLevel(classOption, level):
         case "Mycellian":
             if level > 6: eqLevel = 6
         case _:
-            eqLevel = 0
+            eqLevel = level
 
     return eqLevel
 
