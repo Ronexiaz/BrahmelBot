@@ -1851,5 +1851,21 @@ PHOTOS = [
     "more blood please.png"
 ]
 
+TRACK_LIST = [
+    "Fabula Ultima (Main Theme)",
+    "Ignis! (Normal Battle)",
+    "Per Caelum et Terram (Overworld Travel)",
+    "Res Obscura (Villain Scene)",
+    "Prospera Urbs (The Great City)",
+    "Imperituri (Decisive Battle)",
+    "Regis Concilium (Tense Debate)",
+    "Per Aspera (Dungeon)",
+    "Numera Stellas (Resting Scene)",
+    "Tempus Fugit (Countdown)",
+    "Lacrimae (Tears to Remember)",
+    "Dies Irae (Final Battle)",
+    "Fabula Aeterna (Sacrifice)",
+]
+
 # ERRORS
 LVL_ERROR = "Level maximum cannot be less than level minimum!"
