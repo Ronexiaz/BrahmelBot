@@ -89,23 +89,24 @@ def genAlignment(classOption):
 def genName(classOption):
     names = name_generator.generate_name
     randName = names()
+    # sometimes this variable makes them all women, nothing is to be done
     genderRoll = 'male' if random.randint(1, 2) == 2 else 'female'
 
     match classOption:
         case "Elf" | "Half-Elf":
-            randName = names(style='elven', library=False, gender=genderRoll)
+            randName = names(style='elven', library=False, gender='male' if random.randint(1, 2) == 2 else 'female')
         case "Dwarf":
-            randName = names(style='dwarven', library=False, gender=genderRoll)
+            randName = names(style='dwarven', library=False, gender='male' if random.randint(1, 2) == 2 else 'female')
         case "Gnome":
-            randName = names(style='gnomish', library=False, gender=genderRoll)
+            randName = names(style='gnomish', library=False, gender='male' if random.randint(1, 2) == 2 else 'female')
         case "Halfling":
-            randName = names(style='halfling', library=False, gender=genderRoll)
+            randName = names(style='halfling', library=False, gender='male' if random.randint(1, 2) == 2 else 'female')
         case "Gargantua":
-            randName = names(style='giant', library=False, gender=genderRoll)
+            randName = names(style='giant', library=False, gender='male' if random.randint(1, 2) == 2 else 'female')
         case "Goblin" | "Half-Orc":
-            randName = names(style='orc', library=False, gender=genderRoll)
+            randName = names(style='orc', library=False, gender='male' if random.randint(1, 2) == 2 else 'female')
         case _:
-            randName = names(style='human', library=False, gender=genderRoll)
+            randName = names(style='human', library=False, gender='male' if random.randint(1, 2) == 2 else 'female')
 
     return randName
 

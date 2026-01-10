@@ -122,3 +122,4 @@ compose.yaml
 Dockerfile
 README.Docker.md
 .env
+/music/

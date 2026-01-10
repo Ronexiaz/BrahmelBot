@@ -1867,5 +1867,26 @@ TRACK_LIST = [
     "Fabula Aeterna (Sacrifice)",
 ]
 
+RANK_DICT = {
+    'beyond': [2, 21, 61, 'BEYOND'],
+    '5000': [2, 26, 66, 'Class 5k'],
+    '3000': [2, 31, 71, 'Class 3k'],
+    '1000': [2, 36, 76, 'Class 1k'],
+    '500': [4, 36, 76, 'Shift Z'],
+    '250': [7, 41, 81, 'Shift Y'],
+    '150': [11, 41, 81, 'Shift X'],
+    '100': [16, 46, 86, 'Unearthly'],
+    '75': [21, 51, 86, 'Monstrous'],
+    '50': [26, 56, 91, 'Amazing'],
+    '40': [31, 61, 91, 'Incredible'],
+    '30': [36, 66, 95, 'Remarkable'],
+    '20': [41, 71, 95, 'Excellent'],
+    '10': [46, 76, 98, 'Good'],
+    '6': [51, 81, 98, 'Typical'],
+    '4': [56, 86, 100, 'Poor'],
+    '2': [61, 91, 100, 'Feeble'],
+    '0': [66, 95, 100, 'Shift 0'],
+}
+
 # ERRORS
 LVL_ERROR = "Level maximum cannot be less than level minimum!"

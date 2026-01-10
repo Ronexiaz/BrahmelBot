@@ -4,6 +4,7 @@ import discord
 from discord import app_commands
 
 import Dice
+import FRDice
 import GlobalLists
 import Misc
 import Potion
@@ -172,60 +173,102 @@ async def kit(interaction, classoption: str, level: int):
             "Class does not exist, is not yet supported, or is higher than level 14.")
 
 
-@tree.command(name="leave", description="Leaves a channel")
-async def leave(interaction):
+# @tree.command(name="leave", description="Leaves a channel")
+# async def leave(interaction):
+#     try:
+#         voiceState = interaction.guild.voice_client
+#         await voiceState.disconnect()
+#         voiceState.cleanup()
+#         await interaction.response.send_message("Left channel")
+#     except Exception as e:
+#         print(e)
+#         await interaction.response.send_message(e)
+
+# Nah, this isn't going anywhere for the time being.
+# This is not an elegant or scalable solution, and
+# I'm pretty sure it's a hangable offense...
+
+# noinspection PyUnresolvedReferences
+# @tree.command(name="music", description="Plays some music...maybe?")
+# @app_commands.describe(musicoption="What track number would you like to play? Use /tracklist for more info.",
+#                        loop="How many times would you like this to loop?")
+# async def music(interaction, musicoption: int, loop: bool):
+#     def play(guild, vclient, moption, loop):
+#         if loop:
+#             vclient.play(discord.FFmpegPCMAudio(executable='C:\\ffmpeg\\bin\\ffmpeg',
+#                                                 source='music\\' + option + '.mp3'),
+#                          after=lambda k: play(guild, vclient, moption, loop))
+#
+#         else:
+#             vclient.play(discord.FFmpegPCMAudio(executable='C:\\ffmpeg\\bin\\ffmpeg',
+#                                                 source='music\\' + option + '.mp3'))
+#     try:
+#         channel = interaction.user.voice.channel
+#         option = GlobalLists.TRACK_LIST[musicoption]
+#         voiceClient = interaction.guild.voice_client
+#
+#         if voiceClient is None:
+#             client = await channel.connect(reconnect=True)
+#             voiceClient = interaction.guild.voice_client
+#             await interaction.response.send_message("Joined channel.\nNow playing: " + option)
+#             await play(interaction.guild, voiceClient, option, loop)
+#         else:
+#             voiceClient.stop()
+#             await interaction.response.send_message("\nNow playing: " + option)
+#             await play(interaction.guild, voiceClient, option, loop)
+#     except Exception as e:
+#         print(e)
+#         await interaction.response.send_message("No music option given!")
+
+
+# @tree.command(name="tracklist", description="Current track list for BrahmelBot")
+# async def tracklist(interaction):
+#     tracks = ""
+#     num = 0
+#     for i in GlobalLists.TRACK_LIST:
+#         tracks += "[" + str(num) + "] " + i + "\n"
+#         num += 1
+#
+#     await interaction.response.send_message(tracks)
+
+# noinspection PyUnresolvedReferences
+@tree.command(name="faseriproll", description="Rolls a d100 (utilized by the FASERIP system)!")
+@app_commands.describe(rank="What is the rank number of the action you are rolling for?",
+                       karma="How much karma would you like to spend?")
+async def faseriproll(interaction, rank: str, karma: int):
+    roller = FRDice.FRRoller(rank, karma)
+    user = interaction.user
     try:
-        voiceState = interaction.guild.voice_client
-        await voiceState.disconnect()
-        voiceState.cleanup()
-        await interaction.response.send_message("Left channel")
+        await interaction.response.send_message(user.mention + roller.frRoll())
     except Exception as e:
+        await interaction.response.send_message("A matching rank does not exist for this rank number!")
         print(e)
-        await interaction.response.send_message(e)
 
 
 # noinspection PyUnresolvedReferences
-@tree.command(name="music", description="Plays some music...maybe?")
-@app_commands.describe(musicoption="What track number would you like to play? Use /tracklist for more info.",
-                       loop="How many times would you like this to loop?")
-async def music(interaction, musicoption: int, loop: bool):
-    def play(guild, vclient, moption, loop):
-        if loop:
-            vclient.play(discord.FFmpegPCMAudio(executable='C:\\ffmpeg\\bin\\ffmpeg',
-                                                source='music\\' + option + '.mp3'),
-                         after=lambda k: play(guild, vclient, moption, loop))
-
-        else:
-            vclient.play(discord.FFmpegPCMAudio(executable='C:\\ffmpeg\\bin\\ffmpeg',
-                                                source='music\\' + option + '.mp3'))
-    try:
-        channel = interaction.user.voice.channel
-        option = GlobalLists.TRACK_LIST[musicoption]
-        voiceClient = interaction.guild.voice_client
-
-        if voiceClient is None:
-            client = await channel.connect(reconnect=True)
-            voiceClient = interaction.guild.voice_client
-            await interaction.response.send_message("Joined channel.\nNow playing: " + option)
-            await play(interaction.guild, voiceClient, option, loop)
-        else:
-            voiceClient.stop()
-            await interaction.response.send_message("\nNow playing: " + option)
-            await play(interaction.guild, voiceClient, option, loop)
-    except Exception as e:
-        print(e)
-        await interaction.response.send_message("No music option given!")
-
-
-@tree.command(name="tracklist", description="Current track list for BrahmelBot")
-async def tracklist(interaction):
-    tracks = ""
-    num = 0
-    for i in GlobalLists.TRACK_LIST:
-        tracks += "[" + str(num) + "] " + i + "\n"
-        num += 1
-
-    await interaction.response.send_message(tracks)
+@tree.command(name="faseripranks", description="Provides a list of FASERIP ranks and rank numbers!")
+async def faseripranks(interaction):
+    message = ("FASERIP RANKS LIST"
+               "\n(Use the corresponding numbers for rank with /faseriproll)"
+               "```Shift 0   |   0"
+               "\nFeeble    |   2"
+               "\nPoor      |   4"
+               "\nTypical   |   6"
+               "\nGood      |   10"
+               "\nExcellent |   20"
+               "\nRemarkable|   30"
+               "\nIncredible|   40"
+               "\nAmazing   |   50"
+               "\nMonstrous |   75"
+               "\nUnearthly |   100"
+               "\nShift X   |   150"
+               "\nShift Y   |   250"
+               "\nShift Z   |   500"
+               "\nClass 1k  |   1000"
+               "\nClass 3k  |   3000"
+               "\nClass 5k  |   5000"
+               "\nBeyond    |   beyond```")
+    await interaction.response.send_message(message)
 
 
 def runBot():
