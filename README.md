@@ -4,13 +4,14 @@ BrahmelBot is named after a character I play in an OSE D&D campaign with some fr
 
 Brahmel Bot is VERY simple. Add him to your server and, as long as it's online, you can use any of the slash commands available.
 
-As of July 13th, 2025, BrahmelBot can:
+As of September 26th, 2025, BrahmelBot can:
   - Craft random potions
   - Generate a list of random retainers
   - Roll stats based on the 3d6 system of OSE
   - Generate a random equipment list for a given class and level
   - Simulate weather based on the 13 primary climates
   - Fetch a list of spells and/or the link to its description if it has one
+  - Play some music (and loop it)!
 
 Yeah. Seriously, that's it. If you have suggestions, drop them here or shoot me a message. Now, here's some license jargon to make this feel a little more legit.
 
